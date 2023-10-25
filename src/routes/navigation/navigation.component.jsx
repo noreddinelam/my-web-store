@@ -6,10 +6,11 @@ import {UserContext} from "../../context/user.context";
 import {signOutUser} from "../../utils/firebase/firebase.utils";
 import CardIcon from "../../components/card-icon/card-icon.component";
 import CardDropdown from "../../components/card-dropdown/card-dropdown.component";
+import {CartContext} from "../../context/cart.context";
 
 const Navigation = () => {
     const {currentUser} = useContext(UserContext);
-    const {isCartOpen} = useContext(UserContext);
+    const {isCartOpen} = useContext(CartContext);
 
     const signOutHandler = async () => {
         await signOutUser()

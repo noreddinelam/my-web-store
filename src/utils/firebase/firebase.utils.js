@@ -54,7 +54,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
             console.log('error creating the user', e.message)
         }
     }
-    return existingDoc
+    return userSnapshot
 }
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -93,4 +93,13 @@ export const getCategoriesAndDocuments = async () => {
     //     return acc
     // }, {})
     // return categoryMap
+}
+
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            unsubscribe()
+            resolve(user)
+        }, reject)
+    })
 }

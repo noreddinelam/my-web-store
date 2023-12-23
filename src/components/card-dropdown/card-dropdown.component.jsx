@@ -7,6 +7,7 @@ import {CardDropdownContainer, CardItems, EmptyMessage} from './card-dropdown.st
 import {CartItem} from "../cart-item/cart-item.component";
 import {selectCartItems} from "../../store/cart/cart.selector";
 import {useSelector} from "react-redux";
+import {useCallback} from "react";
 
 const CardDropdown = () => {
 
@@ -14,9 +15,9 @@ const CardDropdown = () => {
 
     const cartItems = useSelector(selectCartItems);
 
-    const goToCheckout = () => {
+    const goToCheckout = useCallback(() => {
         navigate('/checkout');
-    }
+    }, []);
 
     return (
         <CardDropdownContainer>
